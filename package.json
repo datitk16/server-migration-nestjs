@@ -18,11 +18,11 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm": "npm run build && npx typeorm ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli -d dist/db/data-source.js",
+    "typeorm": "npm run build && npx typeorm -r tsconfig-paths/register ./node_modules/typeorm/cli -d dist/db/data-source.js",
     "typeorm:cli": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli -f db/data-source.ts",
     "migration:generate": "npm run typeorm -- migration:generate -d src/database/migrations -n",
     "migration:create": "npm run typeorm:cli -- migration:create -d src/database/migrations -n",
-    "migration:run": "npm run typeorm:cli -- migration:run",
+    "migration:up": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run -d dist/db/data-source.js",
     "migration:revert": "npm run typeorm:cli -- migration:revert"
   },
   "dependencies": {

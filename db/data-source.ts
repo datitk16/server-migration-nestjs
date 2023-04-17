@@ -12,9 +12,16 @@ export const dataSourceOptions: DataSourceOptions = {
     database: 'company',
     entities: ['dist/**/*.entity{.ts,.js}'],
     migrationsTableName: 'table_name',
-    migrations: ["dist/db/migrations/*.js"],
+    migrations: ["dist/src/migrations/*.js"],
 
 }
 
 const database = new DataSource(dataSourceOptions);
 export default database;
+
+/**
+ * - đâù tiên chạy npm run start:dev để cập nhật folder dist 
+ * - chạy lệnh : npx typeorm-ts-node-esm migration:generate ./src/migrations/update-post-table -d ./db/data-source.ts 
+ *   - update-post-table là tên mình muốn đặt cho file migration
+ *  
+ */
