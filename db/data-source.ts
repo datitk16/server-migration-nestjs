@@ -7,7 +7,7 @@ export const dataSourceOptions: DataSourceOptions = {
     username: 'root',
     password: 'password',
     database: 'company',
-    entities: ['dist/**/*.entity{.ts,.js}'],
+    entities: ['dist/**/*.entity{.ts,.js}', 'dist/**/entity{.ts,.js}'],
     migrationsTableName: 'table_name',
     migrations: ["dist/src/migrations/*.js"],
 

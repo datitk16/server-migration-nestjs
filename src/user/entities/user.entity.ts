@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import {
     BaseEntity,
     Column,
@@ -38,8 +37,6 @@ export class User extends BaseEntity {
     @Column({ name: 'phone_number' })
     phoneNumber: string;
 
-    availability: any;
-
     @Column({ name: 'signature' })
     @Exclude({ toPlainOnly: true })
     signature: string;
@@ -57,12 +54,6 @@ export class User extends BaseEntity {
 
     @Column({ name: 'profile', type: 'json' })
     profile: object;
-
-    @Column({ name: 'sso_provider' })
-    ssoProvider: string;
-
-    @Column({ name: 'sso_user_id' })
-    ssoUserId: string;
 
     @Column({ name: 'activated' })
     activated: Date;
