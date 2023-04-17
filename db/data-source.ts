@@ -1,7 +1,4 @@
-/* eslint-disable prettier/prettier */
 import { DataSource, DataSourceOptions } from "typeorm";
-
-
 
 export const dataSourceOptions: DataSourceOptions = {
     type: 'mysql',
