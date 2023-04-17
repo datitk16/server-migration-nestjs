@@ -23,5 +23,5 @@ export default database;
  * - đâù tiên chạy npm run start:dev để cập nhật folder dist 
  * - chạy lệnh : npx typeorm-ts-node-esm migration:generate ./src/migrations/update-post-table -d ./db/data-source.ts 
  *   - update-post-table là tên mình muốn đặt cho file migration
- *  
+ *   - chạy lện npx typeorm-ts-node-esm migration:run -d ./db/data-source.ts để update vào data base
  */
