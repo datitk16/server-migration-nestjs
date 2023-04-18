@@ -31,7 +31,6 @@ export class HashTransformer implements ValueTransformer {
 
   static compare(value: string, hashValue: string) {
     const [originalHash] = hashValue.split('|');
-
     return compare(value, originalHash);
   }
 }

@@ -9,6 +9,9 @@ export class CredentialEntity extends BaseEntity {
   type: CredentialType;
 
   @Column()
+  email: string;
+
+  @Column()
   username: string;
 
   @HashColumn()
