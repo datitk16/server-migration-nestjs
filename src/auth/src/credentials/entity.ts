@@ -5,7 +5,7 @@ import { CredentialType, Status } from '@libs/shared/constants';
 @Entity('aut_credentials')
 @Unique('aut_unique_username_type_deleted_at', ['username', 'type', 'deletedAt'])
 export class CredentialEntity extends BaseEntity {
-  @EnumColumn({ default: CredentialType.Id })
+  @EnumColumn({ default: CredentialType.Id, nullable: true })
   type: CredentialType;
 
   @Column()
@@ -14,12 +14,12 @@ export class CredentialEntity extends BaseEntity {
   @HashColumn()
   password: string;
 
-  @EnumColumn({ default: Status.active })
+  @EnumColumn({ default: Status.active, nullable: true })
   status: Status;
 
-  @Column()
+  @Column({ nullable: true })
   sourceId: number;
 
-  @Column()
+  @Column({ nullable: true })
   phoneNumber: number;
 }
