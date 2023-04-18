@@ -7,6 +7,7 @@ import { dataSourceOptions } from 'db/data-source';
 import { AuthModule } from 'src/auth/src/auth.module';
 
 @Module({
+  // migrations của model k phụ thuộc vào có import module hay không AuthModule
   imports: [TypeOrmModule.forRoot(dataSourceOptions), AuthModule],
   controllers: [AppController],
   providers: [AppService],
