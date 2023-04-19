@@ -1,7 +1,7 @@
 import { config } from '@libs/shared/configs';
 import { Status } from '@libs/shared/constants';
 import { HashTransformer } from '@libs/shared/typeorm/transformers/hash.transformer';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Body, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { CredentialEntity } from './entity';
 import { CredentialRepository } from './repository';
@@ -18,7 +18,7 @@ export class CredentialService {
         return this.userRepository.save(user);
     }
 
-    async login(credentialEntity: CredentialEntity) {
+    async login(@Body() credentialEntity: CredentialEntity) {
         const username = credentialEntity.username || credentialEntity.email;
 
         const credential = await this.userRepository.findOne({ where: { username: username.toLowerCase() } });

@@ -30,9 +30,6 @@ export class BaseEntity implements IEntity {
 
   @Column({ nullable: true })
   deletedBy: number;
-
-  @Column({ nullable: true })
-  businessUnitId?: number;
 }
 
 export class BaseEntityNoId implements IEntity {

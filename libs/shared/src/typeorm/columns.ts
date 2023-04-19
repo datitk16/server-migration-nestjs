@@ -1,4 +1,4 @@
-import { stubFalse } from 'lodash';
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Column, ColumnOptions } from 'typeorm';
 import { BooleanTransformer } from './transformers/boolean.transformer';
 import { EncryptTransformer } from './transformers/encrypt.transformer';
