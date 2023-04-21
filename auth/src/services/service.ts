@@ -3,25 +3,25 @@ import { Status } from '@libs/shared/constants';
 import { HashTransformer } from '@libs/shared/typeorm/transformers/hash.transformer';
 import { Body, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { CredentialEntity } from './entity';
-import { CredentialRepository } from './repository';
+import { UserEntity } from '../entities/entity';
+import { AuthRepository } from '../repositories/repository';
 
 @Injectable()
-export class CredentialService {
+export class AuthService {
     constructor(
-        private readonly userRepository: CredentialRepository,
+        private readonly authRepository: AuthRepository,
         private readonly jwtService: JwtService
     ) { }
 
-    async createUser(userData: CredentialEntity): Promise<CredentialEntity> {
-        const user = this.userRepository.create(userData);
-        return this.userRepository.save(user);
+    async createUser(userData: UserEntity): Promise<UserEntity> {
+        const user = this.authRepository.create(userData);
+        return this.authRepository.save(user);
     }
 
-    async login(@Body() credentialEntity: CredentialEntity) {
+    async login(@Body() credentialEntity: UserEntity) {
         const username = credentialEntity.username || credentialEntity.email;
 
-        const credential = await this.userRepository.findOne({ where: { username: username.toLowerCase() } });
+        const credential = await this.authRepository.findOne({ where: { username: username.toLowerCase() } });
 
         if (!credential || credential.status !== Status.active) {
             throw new UnauthorizedException();

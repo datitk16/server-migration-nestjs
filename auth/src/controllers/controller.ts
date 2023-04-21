@@ -1,17 +1,17 @@
-import { CredentialService } from './service';
+import { AuthService } from '../services/service';
 import { Controller, Post, Body } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { CredentialEntity } from './entity';
+import { UserEntity } from '../entities/entity';
 
-@Controller('credential')
-export class CredentialController {
+@Controller('user')
+export class AuthController {
     constructor(
-        private readonly userService: CredentialService,
+        private readonly userService: AuthService,
         private readonly jwtService: JwtService,
     ) { }
 
     @Post('signup')
-    async signup(@Body() userData: CredentialEntity): Promise<{ token: string }> {
+    async signup(@Body() userData: UserEntity): Promise<{ token: string }> {
         const user = await this.userService.createUser(userData);
         const token = this.jwtService.sign({ sub: user.id });
         return { token };
@@ -19,7 +19,7 @@ export class CredentialController {
 
 
     @Post('login')
-    async login(@Body() userData: CredentialEntity) {
+    async login(@Body() userData: UserEntity) {
         return this.userService.login(userData);
     }
 }

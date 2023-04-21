@@ -1,8 +1,8 @@
-import { CredentialService } from './credentials/service';
-import { CredentialController } from './credentials/controller';
+import { AuthService } from './services/service';
+import { AuthController } from './controllers/controller';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
-import { CredentialRepository } from './credentials/repository';
+import { AuthRepository } from './repositories/repository';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from 'auth/src/strategies/jwt.strategy';
 import { AuthTokenIssuer } from './supports';
@@ -15,12 +15,12 @@ import { AuthTokenIssuer } from './supports';
       signOptions: { expiresIn: '1h' }, // token expires in 1 hour
     }),
   ],
-  controllers: [CredentialController],
+  controllers: [AuthController],
   providers: [
     AuthTokenIssuer,
     JwtStrategy,
-    CredentialRepository,
-    CredentialService
+    AuthRepository,
+    AuthService
   ]
 })
 export class AuthModule { }
