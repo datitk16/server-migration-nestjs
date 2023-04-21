@@ -25,4 +25,7 @@ export class UserEntity extends BaseEntity {
 
   @Column({ nullable: true })
   phoneNumber: number;
+
+  @Column({ nullable: true })
+  permission: string;
 }

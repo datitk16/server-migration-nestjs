@@ -10,7 +10,7 @@ export const dataSourceOptions: DataSourceOptions = {
     database: 'company',
     entities: ['dist/**/*.entity{.ts,.js}', 'dist/**/entity{.ts,.js}'],
     migrationsTableName: 'table_name',
-    migrations: ["dist/src/migrations/*.js"],
+    migrations: ["dist/db/migrations/*.js"],
     namingStrategy: new SnakeNamingStrategy(),
 }
 
