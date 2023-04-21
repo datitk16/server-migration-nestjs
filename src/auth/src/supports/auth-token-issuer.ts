@@ -1,5 +1,5 @@
+import { BaseTokenIssuer, JWTPayload } from '@libs/shared/services/base-token-issuer';
 import { Injectable } from '@nestjs/common';
-import { BaseTokenIssuer, JWTPayload } from '../services/base-token-issuer';
 
 @Injectable()
 export class AuthTokenIssuer extends BaseTokenIssuer {
