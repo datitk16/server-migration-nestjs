@@ -1,6 +1,7 @@
 import { Employee } from 'src/employee/entity';
 import { EmployeeService } from './service';
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('employee')
 export class EmployeeController {
@@ -8,6 +9,7 @@ export class EmployeeController {
         private readonly employeeService: EmployeeService,
     ) { }
 
+    @UseGuards(AuthGuard('jwt'))
     @Post('getList')
     async getList(): Promise<Employee[]> {
         return this.employeeService.getList();

@@ -4,6 +4,8 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { CredentialRepository } from './credentials/repository';
 import { PassportModule } from '@nestjs/passport';
+import { JwtStrategy } from '@libs/shared/strategies/jwt.strategy';
+import { AuthTokenIssuer } from '@libs/shared/supports';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { PassportModule } from '@nestjs/passport';
   ],
   controllers: [CredentialController],
   providers: [
+    AuthTokenIssuer,
+    JwtStrategy,
     CredentialRepository,
     CredentialService
   ]
