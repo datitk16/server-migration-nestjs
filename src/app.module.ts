@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from 'db/data-source';
-import { AuthModule } from 'src/auth/src/auth.module';
+import { AuthModule } from 'auth/src/auth.module';
 import { EmployeeController } from './employee/controller';
 import { EmployeeRepository } from './employee/repository';
 
