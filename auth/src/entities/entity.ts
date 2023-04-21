@@ -1,6 +1,7 @@
 import { BaseEntity } from '@libs/shared/typeorm/entities';
-import { Column, Entity, EnumColumn, HashColumn, Unique } from '@libs/shared/typeorm';
+import { Column, Entity, EnumColumn, HashColumn, OneToMany, Unique } from '@libs/shared/typeorm';
 import { CredentialType, Status } from '@libs/shared/constants';
+import { UserPermissionEntity } from './user-permission.entity';
 
 @Entity('aut_user')
 // @Unique('aut_unique_username_type_deleted_at', ['username', 'type', 'deletedAt'])
@@ -28,4 +29,10 @@ export class UserEntity extends BaseEntity {
 
   @Column({ nullable: true })
   permission: string;
+
+  @OneToMany(
+    type => UserPermissionEntity,
+    userPermission => userPermission.id,
+  )
+  permissions: UserPermissionEntity[];
 }
