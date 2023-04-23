@@ -30,9 +30,9 @@ export class UserEntity extends BaseEntity {
   @Column({ nullable: true })
   permission: string;
 
-  @OneToMany(
-    type => UserPermissionEntity,
-    userPermission => userPermission.id,
-  )
-  permissions: UserPermissionEntity[];
+  // @OneToMany(
+  //   type => UserPermissionEntity,
+  //   userPermission => userPermission.id,
+  // )
+  // permissions: UserPermissionEntity[];
 }

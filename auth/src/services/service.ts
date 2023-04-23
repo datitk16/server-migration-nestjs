@@ -3,7 +3,7 @@ import { Status } from '@libs/shared/constants';
 import { HashTransformer } from '@libs/shared/typeorm/transformers/hash.transformer';
 import { Body, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UserEntity } from '../entities/entity';
+import { UserEntity } from '../entities/user.entity';
 import { AuthRepository } from '../repositories/repository';
 
 @Injectable()
