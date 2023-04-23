@@ -13,7 +13,7 @@ export class AuthController {
     @Post('signup')
     async signup(@Body() userData: UserEntity): Promise<{ token: string }> {
         const user = await this.userService.createUser(userData);
-        const token = this.jwtService.sign({ sub: user.id });
+        const token = this.jwtService.sign({ sub: user.id, permission: user.permission });
         return { token };
     }
 
