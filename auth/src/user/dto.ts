@@ -1,31 +1,9 @@
 import { CredentialType, Status } from "@libs/shared/constants";
 import { BaseRequestDto } from "@libs/shared/dtos/request.dto";
 import { IsEnum, IsNumber, IsOptional, IsString } from "class-validator";
-import { ApiProperty } from '@nestjs/swagger'
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
 
-export class UserBaseDto extends BaseRequestDto {
-
-    @IsOptional()
-    @IsEnum(CredentialType)
-    type: CredentialType;
-
-    @IsOptional()
-    @IsEnum(Status)
-    status: Status;
-
-    @IsOptional()
-    @IsNumber()
-    sourceId: number;
-    @IsOptional()
-    @IsNumber()
-    phoneNumber: number;
-
-    @IsOptional()
-    @IsString()
-    permission: string;
-}
-
-export class RegisterDto extends UserBaseDto {
+export class RegisterDto extends BaseRequestDto {
     @IsString()
     @ApiProperty({ type: String })
     email: string;
@@ -37,9 +15,34 @@ export class RegisterDto extends UserBaseDto {
     @IsString()
     @ApiProperty({ type: String })
     password: string;
+
+    @ApiPropertyOptional()
+    @IsOptional()
+    @IsEnum(CredentialType)
+    type: CredentialType;
+
+    @IsOptional()
+    @ApiPropertyOptional()
+    @IsEnum(Status)
+    status: Status;
+
+    // @ApiProperty()
+    // @IsOptional()
+    // @IsNumber()
+    // sourceId: number;
+
+    @ApiPropertyOptional()
+    @IsOptional()
+    @IsNumber()
+    phoneNumber: number;
+
+    @ApiPropertyOptional()
+    @IsOptional()
+    @IsString()
+    permission: string;
 }
 
-export class LoginDto extends UserBaseDto {
+export class LoginDto extends BaseRequestDto {
     @IsString()
     @ApiProperty({ type: String })
     email: string;
