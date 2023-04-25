@@ -1,5 +1,5 @@
 import { BaseEntity } from '@libs/shared/typeorm/entities';
-import { Column, Entity, EnumColumn, HashColumn } from '@libs/shared/typeorm';
+import { Column, Entity, EnumColumn, HashColumn, ViewColumn } from '@libs/shared/typeorm';
 import { CredentialType, Status } from '@libs/shared/constants';
 
 @Entity('aut_user')
@@ -35,4 +35,39 @@ export class UserEntity extends BaseEntity {
   //   userPermission => userPermission.id,
   // )
   // permissions: UserPermissionEntity[];
+}
+
+
+
+@Entity('aut_users_permissions')
+export class UserPermissionEntity extends BaseEntity {
+  // @ViewColumn()
+  // @ManyToOne(
+  //     type => UserEntity,
+  //     userEntity => userEntity.permissions,
+  // )
+  // @JoinColumn()
+  // @Column()
+  // id: number;
+
+  @ViewColumn()
+  @Column()
+  firstName: string;
+
+  @ViewColumn()
+  @Column()
+  lastName: string;
+
+  @ViewColumn()
+  @Column()
+  email: string;
+
+  @ViewColumn()
+  @Column()
+  status: string;
+
+  @ViewColumn()
+  @Column()
+  permissionName: string;
+
 }

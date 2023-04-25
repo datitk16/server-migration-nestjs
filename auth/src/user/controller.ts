@@ -1,8 +1,8 @@
-import { RegisterDto, LoginDto } from './../dtos/user.dto';
-import { AuthService } from '../services/service';
+import { RegisterDto, LoginDto } from './dto';
+import { AuthService } from './service';
 import { Controller, Post, Body } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UserEntity } from '../entities/user.entity';
+import { UserEntity } from './entity';
 import { ApiBody, ApiTags } from '@nestjs/swagger'
 
 @Controller('user')

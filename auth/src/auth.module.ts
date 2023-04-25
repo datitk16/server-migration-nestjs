@@ -1,8 +1,8 @@
-import { AuthService } from './services/service';
-import { AuthController } from './controllers/controller';
+import { AuthService } from './user/service';
+import { AuthController } from './user/controller';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
-import { AuthRepository } from './repositories/repository';
+import { AuthRepository } from './user/repository';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from 'auth/src/strategies/jwt.strategy';
 import { AuthTokenIssuer } from './supports';

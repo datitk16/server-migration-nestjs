@@ -27,24 +27,24 @@ export class UserBaseDto extends BaseRequestDto {
 
 export class RegisterDto extends UserBaseDto {
     @IsString()
-    @ApiProperty({ type: String, description: 'Email' })
+    @ApiProperty({ type: String })
     email: string;
 
     @IsString()
-    @ApiProperty({ type: String, description: 'User Name' })
+    @ApiProperty({ type: String })
     username: string;
 
     @IsString()
-    @ApiProperty({ type: String, description: 'Password' })
+    @ApiProperty({ type: String })
     password: string;
 }
 
 export class LoginDto extends UserBaseDto {
     @IsString()
-    @ApiProperty({ type: String, description: 'Email' })
+    @ApiProperty({ type: String })
     email: string;
 
     @IsString()
-    @ApiProperty({ type: String, description: 'Password' })
+    @ApiProperty({ type: String })
     password: string;
 }
