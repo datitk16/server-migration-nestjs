@@ -1,7 +1,9 @@
+import { RegisterDto, LoginDto } from './../dtos/user.dto';
 import { AuthService } from '../services/service';
 import { Controller, Post, Body } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserEntity } from '../entities/user.entity';
+import { ApiBody, ApiTags } from '@nestjs/swagger'
 
 @Controller('user')
 export class AuthController {
@@ -11,14 +13,17 @@ export class AuthController {
     ) { }
 
     @Post('signup')
-    async signup(@Body() userData: UserEntity): Promise<{ token: string }> {
+    @ApiTags('Authentication')
+    @ApiBody({ type: RegisterDto })
+    async signup(@Body() userData: RegisterDto): Promise<{ token: string }> {
         const user = await this.userService.createUser(userData);
         const token = this.jwtService.sign({ sub: user.id, permission: user.permission });
         return { token };
     }
 
-
     @Post('login')
+    @ApiTags('Authentication')
+    @ApiBody({ type: LoginDto })
     async login(@Body() userData: UserEntity) {
         return this.userService.login(userData);
     }

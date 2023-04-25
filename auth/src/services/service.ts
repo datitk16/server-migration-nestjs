@@ -1,3 +1,4 @@
+import { RegisterDto } from './../dtos/user.dto';
 import { config } from '@libs/shared/configs';
 import { Status } from '@libs/shared/constants';
 import { HashTransformer } from '@libs/shared/typeorm/transformers/hash.transformer';
@@ -13,7 +14,7 @@ export class AuthService {
         private readonly jwtService: JwtService
     ) { }
 
-    async createUser(userData: UserEntity): Promise<UserEntity> {
+    async createUser(userData: RegisterDto): Promise<UserEntity> {
         const user = this.authRepository.create(userData);
         return this.authRepository.save(user);
     }
