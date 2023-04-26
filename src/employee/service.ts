@@ -1,6 +1,7 @@
 import { Employee } from 'src/employee/entity';
 import { EmployeeRepository } from './repository';
 import { Injectable } from '@nestjs/common';
+import { EmployeeDto } from './dto';
 
 @Injectable()
 export class EmployeeService {
@@ -12,7 +13,7 @@ export class EmployeeService {
         return this.employeeRepository.find();
     }
 
-    async create(employee: Employee): Promise<Employee> {
+    async create(employee: EmployeeDto): Promise<Employee> {
         const payload = this.employeeRepository.create(employee);
         return this.employeeRepository.save(payload)
     }

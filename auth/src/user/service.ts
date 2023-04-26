@@ -1,4 +1,4 @@
-import { RegisterDto } from './dto';
+import { LoginDto, RegisterDto } from './dto';
 import { config } from '@libs/shared/configs';
 import { Status } from '@libs/shared/constants';
 import { HashTransformer } from '@libs/shared/typeorm/transformers/hash.transformer';
@@ -19,16 +19,16 @@ export class AuthService {
         return this.authRepository.save(user);
     }
 
-    async login(@Body() credentialEntity: UserEntity) {
-        const username = credentialEntity.username || credentialEntity.email;
+    async login(@Body() user: LoginDto) {
+        const email = user.email;
 
-        const credential = await this.authRepository.findOne({ where: { username: username.toLowerCase() } });
+        const credential = await this.authRepository.findOne({ where: { email: email.toLowerCase() } });
 
         if (!credential || credential.status !== Status.active) {
             throw new UnauthorizedException();
         }
 
-        const valid = await HashTransformer.compare(credentialEntity.password, credential.password);
+        const valid = await HashTransformer.compare(user.password, credential.password);
 
         if (!valid) {
             throw new UnauthorizedException();
@@ -38,6 +38,7 @@ export class AuthService {
             id: credential.id,
             username: credential.username,
             sourceId: credential.sourceId,
+            permission: credential.permission
         };
 
         const expiresIn = config.auth.expiresIn;
