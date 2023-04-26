@@ -1,10 +1,10 @@
 import { CredentialType, Status } from "@libs/shared/constants";
 import { BaseRequestDto } from "@libs/shared/dtos/request.dto";
-import { IsEnum, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsEmail, IsEnum, IsNumber, IsOptional, IsString } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
 
 export class RegisterDto extends BaseRequestDto {
-    @IsString()
+    @IsEmail()
     @ApiProperty({ type: String })
     email: string;
 
