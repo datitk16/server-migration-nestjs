@@ -1,4 +1,4 @@
-import { ERRORS } from './../../libs/shared/src/constants/errors.constants';
+import { ERRORS } from "@libs/shared/constants";
 import { Injectable, Logger, OnModuleInit } from "@nestjs/common";
 import * as puppeteer from 'puppeteer';
 
