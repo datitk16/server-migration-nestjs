@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { Injectable, Logger } from "@nestjs/common";
 import { TemplateService } from "../templates/service";
-import { TemplateRepository } from "../templates/repository";
 import { PreviewEmployeeDto } from "./dto";
 import { EmployeeHtml } from "../templates/html/employee/html";
 const ejs = require('ejs');
@@ -11,7 +11,6 @@ export class EmployeeTemnplateSerivce {
     private logger = new Logger();
 
     constructor(
-        // private readonly templateRepository: TemplateRepository,
         private readonly templateService: TemplateService,
     ) { }
 
@@ -27,7 +26,7 @@ export class EmployeeTemnplateSerivce {
         }
     }
 
-    // TODO: define type of data base on type template( invoice, ...)
+    // TODO: define type of data base on type template
     private renderHtml(html: string, data) {
         return ejs.render(html, data);
     }

@@ -1,11 +1,15 @@
-import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, HttpStatus, Post, Res, UseGuards } from '@nestjs/common';
 import { EmployeeTemnplateSerivce } from "./service";
 import { Response } from 'express';
 import { PreviewEmployeeDto } from './dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('employee')
 export class EmployeeTemplateControler {
     constructor(private readonly service: EmployeeTemnplateSerivce) { }
+
+
+    @UseGuards(AuthGuard('jwt'))
     @Post('preview')
     async previewInvoice(@Body() input: PreviewEmployeeDto, @Res() res: Response) {
         try {
