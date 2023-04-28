@@ -11,7 +11,6 @@ export class EmployeeController {
         private readonly employeeService: EmployeeService,
     ) { }
 
-    @ApiBearerAuth()
     @ApiOkResponse()
     @ApiBearerAuth()
     @ApiTags('Employee')
@@ -21,7 +20,6 @@ export class EmployeeController {
         return this.employeeService.getList();
     }
 
-    @ApiBearerAuth()
     @ApiOkResponse()
     @ApiBearerAuth()
     @ApiTags('Employee')
