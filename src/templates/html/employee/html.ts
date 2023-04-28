@@ -1,35 +1,85 @@
 export const EmployeeHtml = `<!DOCTYPE html>
 <html>
-
 <head>
-    <link rel="stylesheet" type='text/css' href="https://agent-dev.redoc.co/assets/others/styles.css">
+  <title>My Online CV</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: bold;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      margin-bottom: 0.5em;
+    }
+    a {
+      color: #337ab7;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="ck ck-content ck-print redoc">
-        <figure class="image image-style-align-left"><img
-                src="https://m4storagedev.blob.core.windows.net/devstoragecontainer-public/organization-118/business-unit-116/public/79de6e36-3f91-4d52-99c8-12437de8faad-image.png">
-        </figure>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p><strong>Huttons Asia Ptd Ltd&nbsp;</strong><br><strong>Licence No: L3008899K, UEN No: 200210087C</strong></p>
-        <p><strong>3 BISHAN PLACE #05-01 CPF BISHAN BLDG, Singapore 579838</strong><br><strong>Tel: (65) 6253 0030
-                &nbsp;Fax: (65) 6253 0090&nbsp;Website: www.huttonsgroup.com</strong></p>
-        <hr style="height:1px;border:none;color:#333;background-color:#333;" />
-        <figure class="table">
-        </figure>
-        <p><strong>Being commission due to us for cobroking of the above mentioned property.</strong></p>
-        <figure class="table">
-           
-        </figure>
-        <p style="text-align:justify;"><strong><u>Notes:</u></strong></p>
-        <p style="text-align:justify;">1) Please notify us of any discrepancies within 7 days, otherwise the credit note
-            is
-            considered conclusive evidence that the entries are true, correct and accurate.&nbsp;<br>2) For enquiries
-            related to this credit note, please email to Resale@huttonsgroup.com.&nbsp;</p>
-        <p style="text-align:justify;"><strong>This is a computer generated invoice, no signature is required.</strong>
-        </p>
-    </div>
+  <header>
+    <h1 style="text-transform: capitalize"><%-name %></h1>
+    <p>Email:  <%-email %> | Phone: <%-phoneNumber %></p>
+  </header>
+  <main>
+    <h2>Summary</h2>
+    <p><%-summary %></p>
 
-</html>`;
+    <h2>Skills</h2>
+    <ul>
+     <% if (skills.length > 0){ %>
+      <ul>
+        <% skills.forEach(function(skill) { %>
+        <li style="text-transform: capitalize"><%= skill.name %></li>
+          <% }); %>
+      </ul>
+      <% } %>
+    </ul>
+
+    <h2>Experience</h2>
+    <ul>
+      <li>
+        <h3>Software Engineer</h3>
+        <p>ABC Company | Jan 2018 - Present</p>
+        <ul>
+          <li>Developed and maintained a large-scale e-commerce platform using React and Node.js.</li>
+          <li>Implemented various features such as user authentication, payment processing, and product search.</li>
+          <li>Optimized the website performance by reducing the page load time by 50%.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Web Developer</h3>
+        <p>XYZ Agency | Sep 2015 - Dec 2017</p>
+        <ul>
+          <li>Designed and developed responsive websites for various clients using HTML, CSS, and JavaScript.</li>
+          <li>Collaborated with designers and project managers to deliver high-quality products on time and within budget.</li>
+          <li>Provided ongoing maintenance and support for the websites.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>Education</h2>
+    <ul>
+      <li>
+        <h3>Bachelor of Science in Computer Science</h3>
+        <p>University of XYZ | Sep 2011 - May 2015</p>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 John Doe</p>
+  </footer>
+</body>
+</html>
+`;

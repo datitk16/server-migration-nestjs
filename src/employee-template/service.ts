@@ -17,6 +17,11 @@ export class EmployeeTemnplateSerivce {
     async preview(input: PreviewEmployeeDto) {
         try {
             const renderedHtml = this.renderHtml(EmployeeHtml, {
+                name: input.name,
+                email: input.email,
+                phoneNumber: input.phoneNumber,
+                summary: input.summary,
+                skills: input.skills
             });
 
             return this.templateService.convertHtmlToPdf(renderedHtml);
