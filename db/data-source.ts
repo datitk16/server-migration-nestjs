@@ -3,9 +3,9 @@ import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 
 export const dataSourceOptions: DataSourceOptions = {
     type: 'mysql',
-    host: 'localhost',
+    host: 'nestjs.cdnu3ojpcemk.us-east-2.rds.amazonaws.com',
     port: 3306,
-    username: 'root',
+    username: 'admin',
     password: 'password',
     database: 'company',
     entities: ['dist/**/*.entity{.ts,.js}', 'dist/**/entity{.ts,.js}'],
